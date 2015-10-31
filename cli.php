@@ -34,8 +34,9 @@ class WPSuperCache_Command extends WP_CLI_Command {
 				WP_CLI::error('There is no post with this permalink.');
 			}
 		} else {
-			global $file_prefix;
+			global $file_prefix, $cache_path;
 			wp_cache_clean_cache( $file_prefix, true );
+			prune_super_cache( $cache_path, true );
 			WP_CLI::success( 'Cache cleared.' );
 		}
 	}
